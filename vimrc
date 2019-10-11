@@ -212,4 +212,7 @@ if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
 
+" Enable mouse support
+set mouse=a
+
 hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
