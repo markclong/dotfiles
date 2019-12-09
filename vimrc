@@ -212,9 +212,9 @@ let g:syntastic_ruby_checkers = ['rubocop']
 
 " keybinds
 map <silent> <F3> :Gblame<CR>
+nnoremap <F5> :buffers<CR>:buffer<Space>
 nmap <F8> :TagbarToggle<CR>
 map <F7> :e<CR> " Reload
-
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
@@ -258,4 +258,5 @@ set foldlevel=99
 " Enable folding with the spacebar
 nnoremap <space> za
 
-nnoremap <F5> :buffers<CR>:buffer<Space>
+" Fix for put multiple times
+xnoremap p pgvy
