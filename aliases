@@ -7,72 +7,13 @@ alias v="$VISUAL"
 alias b="bundle"
 
 # Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
+alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare"
 alias s="rspec"
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-alias ll="ls -alh"
-alias la="ls -lh"
-alias l="ls -lh"
-alias flush_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
-alias ctags="`brew --prefix`/bin/ctags"
-
-docker_clean() {
-   docker system prune -f
-}
-
-gcom() {
-   git checkout main 
-   git pull origin main
-}
-
-gmm() {
-  git pull --rebase origin master
-  git fetch
-  git push --force-with-lease
-}
-
-tunnel() {
-   while true; do
-      ssh -t -o BatchMode=yes -L 3128:localhost:3128 home
-      sleep 2
-   done
-}
-
-tunnel53() {
-   while true; do
-      ssh -t -o BatchMode=yes -L 3128:localhost:3128 53
-      sleep 2
-   done
-}
-
-_sz() {
-   source ~/.zshrc
-   echo 'Dot zshrc sourced'
-}
-
-weather() {
-   if [ $# -eq 0 ]; then
-      curl http://wttr.in/Parker,CO
-   else
-      curl http://wttr.in/$1
-   fi
- }
-
-tether() {
-  sudo sysctl -w net.inet.ip.ttl=65
-}
-
-untether() {
-  sudo sysctl -w net.inet.ip.ttl=64
-}
-
-
 # Include custom aliases
-[[ -f ~/.aliases.local ]] && source ~/.aliases.local
-
-portal() { 
-  cd ~/projects/elixir/portal
-}
+if [[ -f ~/.aliases.local ]]; then
+  source ~/.aliases.local
+fi

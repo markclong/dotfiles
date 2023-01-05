@@ -15,14 +15,13 @@ Install
 
 Clone onto your laptop:
 
-    git clone git://github.com/thoughtbot/dotfiles.git ~/dotfiles
+    git clone git@github.com:thoughtbot/dotfiles.git ~/dotfiles
 
 (Or, [fork and keep your fork
 updated](http://robots.thoughtbot.com/keeping-a-github-fork-updated)).
 
 Install [rcm](https://github.com/thoughtbot/rcm):
 
-    brew tap thoughtbot/formulae
     brew install rcm
 
 Install the dotfiles:
@@ -230,7 +229,7 @@ Shell aliases and scripts:
 
 * `b` for `bundle`.
 * `g` with no arguments is `git status` and with arguments acts like `git`.
-* `migrate` for `rake db:migrate && rake db:rollback && rake db:migrate`.
+* `migrate` for `bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare`.
 * `mcd` to make a directory and change into it.
 * `replace foo bar **/*.rb` to find and replace within a given list of files.
 * `tat` to attach to tmux session named the same as the current directory.

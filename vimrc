@@ -47,7 +47,31 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
-  au BufRead,BufNewFile *.psql setfiletype sql
+  autocmd BufRead,BufNewFile
+    \ aliases.local,
+    \zshenv.local,zlogin.local,zlogout.local,zshrc.local,zprofile.local,
+    \*/zsh/configs/*
+    \ set filetype=sh
+  autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
+  autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
+  autocmd BufRead,BufNewFile vimrc.local set filetype=vim
+augroup END
+
+" ALE linting events
+augroup ale
+  autocmd!
+
+  if g:has_async
+    autocmd VimEnter *
+      \ set updatetime=1000 |
+      \ let g:ale_lint_on_text_changed = 0
+    autocmd CursorHold * call ale#Queue(0)
+    autocmd CursorHoldI * call ale#Queue(0)
+    autocmd InsertEnter * call ale#Queue(0)
+    autocmd InsertLeave * call ale#Queue(0)
+  else
+    echoerr "The thoughtbot dotfiles require NeoVim or Vim 8"
+  endif
 augroup END
 
 " When the type of shell script is /bin/sh, assume a POSIX-compatible
@@ -77,15 +101,8 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 
-  "if !exists(":Agc")
-  "  command -nargs=+ -complete=file -bar Agc silent! grep! <args>|cwindow|redraw!
-  "  nnoremap \ :Agc<SPACE>
-  "endif
-  nnoremap \ :Ag<CR>
-  nnoremap <C-\> :FZF<CR>
+  nnoremap \ :Ag<SPACE>
 endif
-nnoremap <C-t> :Buffers<CR>
-let g:fzf_layout = { 'down': '~20%' }
 
 " Make it obvious where 80 characters is
 " set textwidth=120
@@ -132,6 +149,9 @@ let test#ruby#rspec#options = {
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
+
+" Set tags for vim-fugitive
+set tags^=.git/tags
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
