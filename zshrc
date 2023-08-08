@@ -77,12 +77,14 @@ _fzf_compgen_dir() {
 export FZF_DEFAULT_OPTS='--height 30% --border'
 
 
+# auto-completion
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+  . /opt/local/etc/profile.d/bash_completion.sh
+fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/marklong/.sdkman"
 [[ -s "/Users/marklong/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/marklong/.sdkman/bin/sdkman-init.sh"
 [[ -f ~/.zshrc.private ]] && source ~/.zshrc.private
 
-# auto-completion
-if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
-  . /opt/local/etc/profile.d/bash_completion.sh
-fi
