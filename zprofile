@@ -5,3 +5,6 @@ elif [ -d "~/.linuxbrew" ]; then
 elif [ -d "/home/linuxbrew" ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+# Added by `rbenv init` on Mon Jul 14 12:00:24 MDT 2025
+eval "$(rbenv init - --no-rehash zsh)"

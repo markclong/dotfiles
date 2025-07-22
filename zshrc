@@ -41,3 +41,6 @@ _load_settings "$HOME/.zsh/configs"
 [[ -f ~/.aliases ]] && source ~/.aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Load asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
