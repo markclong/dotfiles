@@ -14,8 +14,8 @@
   pf = push --force-with-lease
   st = status
 [core]
-  excludesfile = ~/.gitignore
   autocrlf = input
+	excludesFile = /Users/Mark.Long/.gitignore_global
 [merge]
   ff = only
 [commit]
@@ -33,3 +33,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[user]
+	email = mark.long@braze.com
+	name = Mark Long
+[url "git@github.com:"]
+	insteadOf = https://github.com/
