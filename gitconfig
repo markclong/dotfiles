@@ -34,7 +34,7 @@
 	process = git-lfs filter-process
 	required = true
 [user]
-	email = mark.long@braze.com
+	email = markclong@gmail.com
 	name = Mark Long
 [url "git@github.com:"]
 	insteadOf = https://github.com/
