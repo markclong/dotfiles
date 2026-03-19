@@ -180,8 +180,8 @@ set complete+=kspell
 " Always use vertical diffs
 set diffopt+=vertical
 
-" Use Catpuccin Latte as our default color scheme
-colorscheme catppuccin_latte
+" Use Catpuccin Macchiato as our default color scheme
+silent! colorscheme catppuccin_macchiato
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
