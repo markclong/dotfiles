@@ -156,6 +156,22 @@ can add the `virtualenv` file, another `keys`, and a third `chpwd`.
 
 The `~/dotfiles-local/zshrc.local` is loaded after `~/dotfiles-local/zsh/configs`.
 
+## zsh History Configurations
+
+The zsh history is configured with several useful options:
+
+-   `hist_ignore_all_dups`: Removes duplicate commands from history
+
+-   `hist_ignore_space`: Commands starting with a space are not saved to history
+    (useful for sensitive commands)
+
+-   `inc_append_history`: Adds commands to history as they're executed, not just
+    when the shell exits
+
+-   `share_history`: Shares history across multiple zsh sessions in real-time
+
+History size is set to 8,192 entries providing ample command history.
+
 ## vim Configurations
 
 Similarly to the zsh configuration directory as described above, vim
@@ -214,8 +230,24 @@ configuration:
 - Add trusted binstubs to the `PATH`.
 - Load the ASDF version manager.
 
+[Rails](https://rubyonrails.org)
+
+- Adds [railsrc][] with the following options to integrate with [Suspenders][].
+
+```
+--database=postgresql
+--skip-test
+-m=https://raw.githubusercontent.com/thoughtbot/suspenders/main/lib/install/web.rb
+```
+
+If you want to skip this file altogether, run `rails new my_app --no_rc`.
+
+[railsrc]: https://github.com/rails/rails/blob/7f7f9df8641e35a076fe26bd097f6a1b22cb4e2d/railties/lib/rails/generators/rails/app/USAGE#L5C1-L7
+[Suspenders]: https://github.com/thoughtbot/suspenders
+
 Shell aliases and scripts:
 
+- `...` for quicker navigation to the parent's parent directory.
 - `b` for `bundle`.
 - `g` with no arguments is `git status` and with arguments acts like `git`.
 - `migrate` for `bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare`.
@@ -233,16 +265,17 @@ in this project.
 
 ## License
 
-dotfiles is copyright © 2009-2018 thoughtbot. It is free software, and may be
+dotfiles is copyright © 2009 thoughtbot. It is free software, and may be
 redistributed under the terms specified in the [`LICENSE`] file.
 
 [`LICENSE`]: /LICENSE
 
+<!-- START /templates/footer.md -->
 ## About thoughtbot
 
-![thoughtbot](https://thoughtbot.com/brand_assets/93:44.svg)
+![thoughtbot](https://thoughtbot.com/thoughtbot-logo-for-readmes.svg)
 
-dotfiles is maintained and funded by thoughtbot, inc.
+This repo is maintained and funded by thoughtbot, inc.
 The names and logos for thoughtbot are trademarks of thoughtbot, inc.
 
 We love open source software!
@@ -251,3 +284,5 @@ We are [available for hire][hire].
 
 [community]: https://thoughtbot.com/community?utm_source=github
 [hire]: https://thoughtbot.com/hire-us?utm_source=github
+
+<!-- END /templates/footer.md -->

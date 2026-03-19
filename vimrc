@@ -10,6 +10,7 @@ set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitigno
 set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
+set termguicolors " make our colors pretty
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
@@ -90,8 +91,17 @@ set list listchars=tab:»·,trail:·,nbsp:·
 " Use one space, not two, after punctuation.
 set nojoinspaces
 
+" Use ripgrep https://github.com/BurntSushi/ripgrep
+if executable('rg')
+  " Use Rg over Grep
+  set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+
+  " Use rg in fzf for listing files. Lightning fast and respects .gitignore
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+
+  nnoremap \ :Rg<SPACE>
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
+elseif executable('ag')
   " Use Ag over Grep
   set grepprg=ag\ --nogroup\ --nocolor
 
@@ -169,6 +179,9 @@ set complete+=kspell
 
 " Always use vertical diffs
 set diffopt+=vertical
+
+" Use Catpuccin Latte as our default color scheme
+colorscheme catppuccin_latte
 
 " Local config
 if filereadable($HOME . "/.vimrc.local")
