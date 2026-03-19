@@ -44,8 +44,6 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # Load asdf
 if [ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ]; then
   . /opt/homebrew/opt/asdf/libexec/asdf.sh
