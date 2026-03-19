@@ -15,7 +15,7 @@
   st = status
 [core]
   autocrlf = input
-	excludesFile = /Users/Mark.Long/.gitignore_global
+	excludesFile = ~/.gitignore_global
 [merge]
   ff = only
 [commit]

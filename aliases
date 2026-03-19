@@ -15,6 +15,31 @@ alias s="rspec"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+# Git - detect default branch and checkout/pull
+_git_main_branch() {
+  local branch
+  branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+  [[ -n "$branch" ]] && echo "$branch" && return
+  for b in main master develop; do
+    git show-ref --verify --quiet "refs/remotes/origin/$b" && echo "$b" && return
+  done
+}
+
+gcom() {
+  local branch=$(_git_main_branch)
+  git checkout "$branch" && git pull origin "$branch"
+}
+
+gcod() {
+  git checkout develop && git pull origin develop
+}
+
+gmm() {
+  local branch=$(_git_main_branch)
+  git pull --rebase origin "$branch"
+  git push --force-with-lease
+}
+
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local
